@@ -54,11 +54,11 @@ function game() {
   playRound(playerSelection, computerSelection);
   playRound(playerSelection, computerSelection);
   if (w > l) {
-      console.log('player wins game with ', w, 'win(s), ', l, ' lose(s), ', t, ' tie(s).');
+      console.log(`player wins game with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
   } else if (w < l) {
-      console.log('player loses game with ', w, 'win(s), ', l, ' lose(s), ', t, ' tie(s).');
+      console.log(`player loses game with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
   } else {
-      console.log('tie with ', w, 'win(s), ', l, ' lose(s), ', t, ' tie(s).');
+      console.log(`game tie with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
   }
 }
 

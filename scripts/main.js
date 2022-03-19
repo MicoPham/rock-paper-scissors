@@ -14,24 +14,16 @@ let w = 0,
     l = 0,
     t = 0;
 
-function resetScores () {
-  w = 0;
-  l = 0;
-  t = 0;
-}
-
 function checkWinner() {
     if (w >= 5) {
     divDisplay.textContent = `PLAYER WINS GAME WITH ${w} win(s), ${l} lose(s), ${t} tie(s).`;
     container.appendChild(divDisplay);
-    resetScores()
     return;
   }
   
   if (l >= 5) {
     divDisplay.textContent = `PLAYER LOSES GAME WITH ${w} win(s), ${l} lose(s), ${t} tie(s).`;
     container.appendChild(divDisplay);
-    resetScores()
     return;
   }
 }
@@ -104,7 +96,11 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const container = document.querySelector('#container');
+const body = document.querySelector('body');
+
+const container = document.createElement('div');
+container.id = 'container';
+body.appendChild(container);
 
 const btnRock = document.createElement('button');
 btnRock.classList.add('rock');
@@ -134,3 +130,13 @@ const ruleDisplay = document.createElement('div');
 ruleDisplay.classList.add('rule');
 ruleDisplay.textContent = "First to win 5 rounds, wins game";
 container.prepend(ruleDisplay);
+
+const reset = document.createElement('button');
+reset.classList.add('reset')
+reset.textContent = "Reset Game";
+body.appendChild(reset);
+
+const resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', () => {
+  location.reload();
+})

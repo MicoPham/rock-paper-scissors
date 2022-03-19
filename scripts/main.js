@@ -22,14 +22,14 @@ function resetScores () {
 
 function checkWinner() {
     if (w >= 5) {
-    divDisplay.textContent = `player wins game with ${w} win(s), ${l} lose(s), ${t} tie(s).`;
+    divDisplay.textContent = `PLAYER WINS GAME WITH ${w} win(s), ${l} lose(s), ${t} tie(s).`;
     container.appendChild(divDisplay);
     resetScores()
     return;
   }
   
   if (l >= 5) {
-    divDisplay.textContent = `player loses game with ${w} win(s), ${l} lose(s), ${t} tie(s).`;
+    divDisplay.textContent = `PLAYER LOSES GAME WITH ${w} win(s), ${l} lose(s), ${t} tie(s).`;
     container.appendChild(divDisplay);
     resetScores()
     return;
@@ -37,66 +37,65 @@ function checkWinner() {
 }
 
 function playRound(playerSelection, computerSelection) {
- // playerSelection = playerPlay();
   computerSelection = computerPlay();
 
   if ((playerSelection === 'rock') && (computerSelection === 0)) {
-    divResults.textContent = 'tie';
+    divResults.textContent = 'tie round';
     t++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'rock') && (computerSelection === 1)) {
-    divResults.textContent = 'player lose';
+    divResults.textContent = 'player lose round';
     container.appendChild(divResults);
     l++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'rock') && (computerSelection === 2)) {
-    divResults.textContent = 'player win';
+    divResults.textContent = 'player win round';
     container.appendChild(divResults);
     w++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'paper') && (computerSelection === 0)) {
-    divResults.textContent = 'player win';
+    divResults.textContent = 'player win round';
     container.appendChild(divResults);
     w++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'paper') && (computerSelection === 1)) {
-    divResults.textContent = 'tie';
+    divResults.textContent = 'tie round';
     container.appendChild(divResults);
     t++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'paper') && (computerSelection === 2)) {
-    divResults.textContent = 'player lose';
+    divResults.textContent = 'player lose round';
     container.appendChild(divResults);
     l++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'scissors') && (computerSelection === 0)) {
-    divResults.textContent = 'player lose';
+    divResults.textContent = 'player lose round';
     container.appendChild(divResults);
     l++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'scissors') && (computerSelection === 1)) {
-    divResults.textContent = 'player win';
+    divResults.textContent = 'player win round';
     container.appendChild(divResults);
     w++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
     checkWinner()
     return;
   } else if ((playerSelection === 'scissors') && (computerSelection === 2)) {
-    divResults.textContent = 'tie';
+    divResults.textContent = 'tie round';
     container.appendChild(divResults);
     t++;
     divDisplay.textContent = `Player: ${w} Computer: ${l} Tie: ${t}`;
@@ -104,23 +103,6 @@ function playRound(playerSelection, computerSelection) {
     return;
   }
 }
-
-/*
-function game() {  
-  playRound(playerSelection, computerSelection);
-  playRound(playerSelection, computerSelection);
-  playRound(playerSelection, computerSelection);
-  playRound(playerSelection, computerSelection);
-  playRound(playerSelection, computerSelection);
-  if (w > l) {
-      console.log(`player wins game with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
-  } else if (w < l) {
-      console.log(`player loses game with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
-  } else {
-      console.log(`game tie with ${w} win(s), ${l} lose(s), ${t} tie(s).`);
-  }
-}
-*/
 
 const container = document.querySelector('#container');
 
@@ -147,3 +129,8 @@ const divResults = document.createElement('div');
 const divDisplay = document.createElement('div');
 divDisplay.classList.add('display');
 container.appendChild(divDisplay);
+
+const ruleDisplay = document.createElement('div');
+ruleDisplay.classList.add('rule');
+ruleDisplay.textContent = "First to win 5 rounds, wins game";
+container.prepend(ruleDisplay);
